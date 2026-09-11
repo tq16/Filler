@@ -51,6 +51,16 @@ fn accepts_exactly_one_own_overlap() {
 }
 
 #[test]
+fn rejects_two_own_overlaps() {
+    let turn = Turn {
+        board: vec![vec!['@', '@', '.']],
+        piece: vec![vec!['O', 'O']],
+    };
+
+    assert!(!placement::is_valid(&turn, &player_one(), 0, 0));
+}
+
+#[test]
 fn rejects_enemy_overlap() {
     let turn = test_turn();
 
